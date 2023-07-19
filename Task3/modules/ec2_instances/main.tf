@@ -16,7 +16,6 @@ resource "aws_instance" "public_instance_1" {
   subnet_id              = var.public_subnet_ids[0]
   vpc_security_group_ids = [var.public_security_group_id]
   associate_public_ip_address = true
-  #key_name      = "key_private"
   user_data = file("./modules/ec2_instances/nginx.sh")
 
 
@@ -32,7 +31,6 @@ resource "aws_instance" "public_instance_2" {
   subnet_id              = var.public_subnet_ids[1]
   vpc_security_group_ids = [var.public_security_group_id]
   associate_public_ip_address = true
-  #key_name      = "key_private"
   user_data = file("./modules/ec2_instances/nginx.sh")
 
   
@@ -49,7 +47,6 @@ resource "aws_instance" "private_instance_1" {
   instance_type          = "t2.micro"
   subnet_id              = var.private_subnet_ids[0]
   vpc_security_group_ids = [var.private_security_group_id]
-  #key_name      = "amora"
 
   user_data = <<-EOT
               #!/bin/bash
@@ -69,7 +66,6 @@ resource "aws_instance" "private_instance_2" {
   instance_type          = "t2.micro"
   subnet_id              = var.private_subnet_ids[1]
   vpc_security_group_ids = [var.private_security_group_id]
-  #key_name      = "amora"
   user_data = <<-EOT
               #!/bin/bash
               sudo apt-get update
